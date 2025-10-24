@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>xPredictors</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 600px;
+            background: white;
+            border-radius: 20px;
+            padding: 60px 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        .logo img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        h1 {
+            font-size: 32px;
+            margin-bottom: 20px;
+            color: #2d3748;
+        }
+
+        h2 {
+            font-size: 24px;
+            color: #2d3748;
+            margin: 20px 0 10px;
+            font-weight: bold;
+        }
+
+        p {
+            font-size: 18px;
+            color: #718096;
+            margin-bottom: 20px;
+        }
+
+        .highlight {
+            font-weight: bold;
+            color: #667eea;
+        }
+
+        .badges {
+            display: flex;
+            gap: 15px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 12px 24px;
+            background: #f7fafc;
+            border-radius: 8px;
+            text-decoration: none;
+            color: #2d3748;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 2px solid #e2e8f0;
+        }
+
+        .badge:hover {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+        }
+
+        .badge.primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+        }
+
+        .badge.primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        }
+
+        footer {
+            margin-top: 40px;
+            padding-top: 30px;
+            border-top: 1px solid #e2e8f0;
+            color: #a0aec0;
+            font-size: 14px;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 30px;
+            }
+
+            h1 {
+                font-size: 24px;
+            }
+
+            .logo {
+                font-size: 36px;
+            }
+
+            h2 {
+                font-size: 20px;
+            }
+
+            p {
+                font-size: 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo">
+            <img src="logo.png" alt="xPredictors Logo">
+        </div>
+        <h1>Prediction Playground (with a Swipe-tastic Twist!)</h1>
+        <p>Think you’re a stock market wizard? xPredictors lets you swipe your gut feelings into action—forget the crystal ball, let’s guess the market’s next move before 3 PM ET today (it’s 08:31 AM JST now—tick tock!)</p>
+
+        <h2>xPredictors - Test Your Market Instincts</h2>
+        <p>Join a buzzing community predicting daily stock moves. Swipe your call before the <span class="highlight">3 PM ET cutoff</span> (that’s 4 AM JST tomorrow!) and see how your hunches stack up globally—get ready to smirk or groan!</p>
+
+        <h2>How It Works</h2>
+        <p>Swipe <span class="highlight">UP</span> if you think stocks will rise, <span class="highlight">DOWN</span> if they’ll drop, or left if they’ll stay <span class="highlight">unchanged</span> each trading day. Check back after the market closes to celebrate your wins or laugh at your wild misses, and track your <span class="highlight">prediction accuracy over time</span>.</p>
+
+        <h2>Features</h2>
+        <p>- <span class="highlight">Daily Market Predictions</span>: Swipe UP/DOWN/left for up to 5 stocks with a fun twist</p>
+        <p>- <span class="highlight">Your Personal Stats</span>: Check your win rate (weekly, monthly, all-time)—brag or shrug!</p>
+        <p>- <span class="highlight">Global Rankings</span>: See where you rank among fellow market daredevils</p>
+        <p>- <span class="highlight">Recent Results</span>: Relive your triumphs or chuckle at your flops</p>
+        <p>- <span class="highlight">Popular Stocks</span>: Peek at the community’s hottest picks</p>
+        <p>- <span class="highlight">Earn Credits</span>: Watch ads to snag extra swipe votes—freebies for the win!</p>
+
+        <h2>Who It's For</h2>
+        <p>Whether you’re a stock pro, a casual guesser, or just here to swipe and see, xPredictors turns market chaos into a <span class="highlight">fun game</span> to test your instincts and peek at others’ bold moves.</p>
+
+        <h2>Free to Use</h2>
+        <p>Totally free with ads and optional community tips. No subscriptions, <span class="highlight">no sneaky fees</span>—just pure swipe-and-predict fun!</p>
+
+        <h2>Disclaimer</h2>
+        <p>xPredictors is for <span class="highlight">entertainment only</span>—don’t bet your lunch money! No financial advice, no promises, just good vibes. Do your own research and chat with a pro before investing.</p>
+
+        <div class="badges">
+            <a href="https://apps.apple.com/jp/app/xpredictors/id6751775587" class="badge primary">
+                <span style="font-size: 20px;">📱</span> Download from the App Store
+            </a>
+        </div>
+        <footer>
+            <p>&copy; 2025 xPredictors. All rights reserved.</p>
+        </footer>
+    </div>
+</body>
+</html>
