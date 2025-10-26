@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>xPredictors</title>
+    <title>xPredictors - Prediction Playground</title>
     <style>
+        /* --- 共通スタイルとリセット --- */
         * {
             margin: 0;
             padding: 0;
@@ -13,168 +14,297 @@
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Hiragino Sans', 'Hiragino Kaku Gothic ProN', Meiryo, sans-serif;
-            line-height: 1.6;
+            line-height: 1.7;
             color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
+            background-color: #FFFFFF;
         }
 
         .container {
-            max-width: 600px;
-            background: white;
-            border-radius: 20px;
-            padding: 60px 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 960px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+
+        h1, h2, h3 {
+            margin-bottom: 20px;
+            color: #2d3748;
+            line-height: 1.3;
+        }
+
+        h1 { font-size: 40px; font-weight: 800; }
+        h2 { font-size: 32px; font-weight: 700; text-align: center; }
+        h3 { font-size: 20px; font-weight: 700; }
+        p {
+            font-size: 16px;
+            color: #4a5568;
+            margin-bottom: 20px;
+        }
+        
+        .text-center {
             text-align: center;
         }
 
-        .logo {
-            font-size: 48px;
-            font-weight: bold;
-            margin-bottom: 20px;
-        }
-
-        .logo img {
-            max-width: 100%;
-            height: auto;
-        }
-
-        h1 {
-            font-size: 32px;
-            margin-bottom: 20px;
-            color: #2d3748;
-        }
-
-        h2 {
-            font-size: 24px;
-            color: #2d3748;
-            margin: 20px 0 10px;
-            font-weight: bold;
-        }
-
-        p {
-            font-size: 18px;
-            color: #718096;
-            margin-bottom: 20px;
-        }
-
         .highlight {
-            font-weight: bold;
             color: #667eea;
+            font-weight: 600;
         }
 
-        .badges {
+        /* --- ヘッダー --- */
+        .header {
+            padding: 20px 0;
+            background: white;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        .header .container {
             display: flex;
-            gap: 15px;
-            justify-content: center;
-            flex-wrap: wrap;
+            align-items: center;
         }
-
-        .badge {
-            display: inline-block;
-            padding: 12px 24px;
-            background: #f7fafc;
-            border-radius: 8px;
-            text-decoration: none;
+        .header .logo img {
+            height: 40px;
+            margin-right: 15px;
+        }
+        .header .logo-text {
+            font-size: 24px;
+            font-weight: 700;
             color: #2d3748;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid #e2e8f0;
+            text-decoration: none;
         }
 
-        .badge:hover {
-            background: #667eea;
-            color: white;
-            border-color: #667eea;
-            transform: translateY(-2px);
-            box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
-        }
-
-        .badge.primary {
+        /* --- ヒーローセクション (ファーストビュー) --- */
+        .hero {
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border: none;
+            padding: 80px 0;
+            text-align: center;
+        }
+        .hero h1 {
+            color: white;
+            font-size: 48px;
+        }
+        .hero p {
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 20px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
         }
 
-        .badge.primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.5);
+        /* --- App Store ボタン --- */
+        .app-store-badge {
+            display: inline-block;
+            padding: 14px 28px;
+            background: #000000;
+            color: white;
+            border-radius: 10px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 18px;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+        }
+        .app-store-badge:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
         }
 
-        footer {
+        /* --- 概要セクション (How it worksなど) --- */
+        .about {
+            background-color: #f8f9fa;
+        }
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start; /* top揃え */
+        }
+        .about-box {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.05);
+        }
+
+        /* --- 特徴セクション (カード型) --- */
+        .features {
+            background-color: #FFFFFF;
+        }
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 30px;
             margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid #e2e8f0;
+        }
+        .feature-card {
+            background: #f8f9fa;
+            border: 1px solid #e2e8f0;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.07);
+        }
+        .feature-card h3 {
+            color: #667eea;
+        }
+        .feature-card p {
+            font-size: 15px;
+            margin-bottom: 0;
+        }
+
+        /* --- CTA (行動喚起) セクション --- */
+        .cta {
+            background-color: #2d3748;
+            color: white;
+            text-align: center;
+        }
+        .cta h2 {
+            color: white;
+        }
+        .cta p {
+            color: rgba(255, 255, 255, 0.8);
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 30px;
+        }
+
+        /* --- 免責事項・フッター --- */
+        .disclaimer {
+            background: #f8f9fa;
+            text-align: center;
+        }
+        .disclaimer p {
+            font-size: 14px;
+            color: #718096;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 0; /* 最後のpタグなのでマージン削除 */
+        }
+
+        .footer {
+            padding: 40px 0;
+            text-align: center;
+            background: #2d3748;
             color: #a0aec0;
             font-size: 14px;
         }
 
-        @media (max-width: 600px) {
-            .container {
-                padding: 40px 30px;
-            }
+        /* --- レスポンシブ対応 (スマホ用) --- */
+        @media (max-width: 768px) {
+            h1 { font-size: 36px; }
+            .hero h1 { font-size: 40px; }
+            .hero p { font-size: 18px; }
+            h2 { font-size: 28px; }
 
-            h1 {
-                font-size: 24px;
-            }
-
-            .logo {
-                font-size: 36px;
-            }
-
-            h2 {
-                font-size: 20px;
-            }
-
-            p {
-                font-size: 16px;
+            .about-grid {
+                grid-template-columns: 1fr; /* 縦1列にする */
             }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="logo">
-            <img src="logo.png" alt="xPredictors Logo">
-        </div>
-        <h1>Prediction Playground (with a Swipe-tastic Twist!)</h1>
-        <p>Think you’re a stock market wizard? xPredictors lets you swipe your gut feelings into action—forget the crystal ball, let’s guess the market’s next move before 3 PM ET today (it’s 08:31 AM JST now—tick tock!)</p>
 
-        <h2>xPredictors - Test Your Market Instincts</h2>
-        <p>Join a buzzing community predicting daily stock moves. Swipe your call before the <span class="highlight">3 PM ET cutoff</span> (that’s 4 AM JST tomorrow!) and see how your hunches stack up globally—get ready to smirk or groan!</p>
-
-        <h2>How It Works</h2>
-        <p>Swipe <span class="highlight">UP</span> if you think stocks will rise, <span class="highlight">DOWN</span> if they’ll drop, or left if they’ll stay <span class="highlight">unchanged</span> each trading day. Check back after the market closes to celebrate your wins or laugh at your wild misses, and track your <span class="highlight">prediction accuracy over time</span>.</p>
-
-        <h2>Features</h2>
-        <p>- <span class="highlight">Daily Market Predictions</span>: Swipe UP/DOWN/left for up to 5 stocks with a fun twist</p>
-        <p>- <span class="highlight">Your Personal Stats</span>: Check your win rate (weekly, monthly, all-time)—brag or shrug!</p>
-        <p>- <span class="highlight">Global Rankings</span>: See where you rank among fellow market daredevils</p>
-        <p>- <span class="highlight">Recent Results</span>: Relive your triumphs or chuckle at your flops</p>
-        <p>- <span class="highlight">Popular Stocks</span>: Peek at the community’s hottest picks</p>
-        <p>- <span class="highlight">Earn Credits</span>: Watch ads to snag extra swipe votes—freebies for the win!</p>
-
-        <h2>Who It's For</h2>
-        <p>Whether you’re a stock pro, a casual guesser, or just here to swipe and see, xPredictors turns market chaos into a <span class="highlight">fun game</span> to test your instincts and peek at others’ bold moves.</p>
-
-        <h2>Free to Use</h2>
-        <p>Totally free with ads and optional community tips. No subscriptions, <span class="highlight">no sneaky fees</span>—just pure swipe-and-predict fun!</p>
-
-        <h2>Disclaimer</h2>
-        <p>xPredictors is for <span class="highlight">entertainment only</span>—don’t bet your lunch money! No financial advice, no promises, just good vibes. Do your own research and chat with a pro before investing.</p>
-
-        <div class="badges">
-            <a href="https://apps.apple.com/jp/app/xpredictors/id6751775587" class="badge primary">
-                <span style="font-size: 20px;">📱</span> Download from the App Store
+    <header class="header">
+        <div class="container">
+            <a href="#" class="logo" style="text-decoration: none; display: flex; align-items: center;">
+                <img src="logo.png" alt="xPredictors Logo">
+                <span class="logo-text">xPredictors</span>
             </a>
         </div>
-        <footer>
-            <p>&copy; 2025 xPredictors. All rights reserved.</p>
-        </footer>
-    </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Prediction Playground<br>(with a Swipe-tastic Twist!)</h1>
+                <p>
+                    Think you’re a stock market wizard? xPredictors lets you swipe your gut feelings into action—forget the crystal ball, let’s guess the market’s next move!
+                </p>
+                <a href="https://apps.apple.com/jp/app/xpredictors/id6751775587" class="app-store-badge">
+                    📱 Download from the App Store
+                </a>
+            </div>
+        </section>
+
+        <section class="about">
+            <div class="container">
+                <div class="about-grid">
+                    <div class="about-box">
+                        <h2>🚀 How It Works</h2>
+                        <p>Swipe <span class="highlight">UP</span> if you think stocks will rise, <span class="highlight">DOWN</span> if they’ll drop, or left if they’ll stay <span class="highlight">unchanged</span> each trading day.</p>
+                        <p>Check back after the market closes to celebrate your wins or laugh at your wild misses, and track your <span class="highlight">prediction accuracy over time</span>.</p>
+                    </div>
+                    <div class="about-box">
+                        <h2>🎯 Who It's For</h2>
+                        <p>Whether you’re a stock pro, a casual guesser, or just here to swipe and see, xPredictors turns market chaos into a <span class="highlight">fun game</span> to test your instincts.</p>
+                        <p>Totally free with ads. No subscriptions, <span class="highlight">no sneaky fees</span>—just pure swipe-and-predict fun!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="features">
+            <div class="container">
+                <h2>Features</h2>
+                <div class="features-grid">
+                    <div class="feature-card">
+                        <h3>📈 Daily Market Predictions</h3>
+                        <p>Swipe UP/DOWN/left for up to 5 stocks with a fun twist.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📊 Your Personal Stats</h3>
+                        <p>Check your win rate (weekly, monthly, all-time)—brag or shrug!</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🌍 Global Rankings</h3>
+                        <p>See where you rank among fellow market daredevils.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>📜 Recent Results</h3>
+                        <p>Relive your triumphs or chuckle at your flops.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>🔥 Popular Stocks</h3>
+                        <p>Peek at the community’s hottest picks.</p>
+                    </div>
+                    <div class="feature-card">
+                        <h3>💰 Earn Credits</h3>
+                        <p>Watch ads to snag extra swipe votes—freebies for the win!</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="cta">
+            <div class="container">
+                <h2>Ready to Test Your Instincts?</h2>
+                <p>Download xPredictors now and join the global prediction community!</p>
+                <a href="https://apps.apple.com/jp/app/xpredictors/id6751775587" class="app-store-badge">
+                    📱 Download from the App Store
+                </a>
+            </div>
+        </section>
+        
+        <section class="disclaimer">
+            <div class="container">
+                <h2>Disclaimer</h2>
+                <p>xPredictors is for <span class="highlight">entertainment only</span>—don’t bet your lunch money! No financial advice, no promises, just good vibes. Do your own research and chat with a pro before investing.</p>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <p>&copy; 2025 xPredictors. All rights reserved.</p>
+    </footer>
+
 </body>
 </html>
