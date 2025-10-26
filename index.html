@@ -120,7 +120,7 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 40px;
-            align-items: start; /* top揃え */
+            align-items: start;
         }
         .about-box {
             background: white;
@@ -197,6 +197,25 @@
             color: #a0aec0;
             font-size: 14px;
         }
+        
+        /* ▼▼▼ フッターリンク用にCSSをここに追加 ▼▼▼ */
+        .footer p {
+             margin-bottom: 15px; /* コピーライトとリンクの間に隙間を空ける */
+        }
+        .footer .footer-links a {
+            color: #a0aec0; /* フッターの文字色に合わせる */
+            text-decoration: none; /* 下線を消す */
+            margin: 0 10px; /* リンク同士の左右の隙間 */
+            transition: color 0.2s ease, text-decoration 0.2s ease;
+        }
+        .footer .footer-links a:hover {
+            color: #ffffff; /* ホバー時に白くする */
+            text-decoration: underline; /* ホバー時に下線を引く */
+        }
+        .footer .footer-links span {
+            color: #718096; /* | (区切り線) の色 */
+        }
+        /* ▲▲▲ ここまで追加 ▲▲▲ */
 
         /* --- レスポンシブ対応 (スマホ用) --- */
         @media (max-width: 768px) {
@@ -300,7 +319,11 @@
 
     <footer class="footer">
         <p>&copy; 2025 xPredictors. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="https://xpredictors.github.io/TERMS_AND_CONDITIONS/" target="_blank" rel="noopener noreferrer">Terms of Use</a>
+            <span>|</span>
+            <a href="https://xpredictors.github.io/xpredictors-privacy/" target="_blank" rel="noopener noreferrer">Privacy Policy</a>
+        </div>
     </footer>
-
-</body>
+    </body>
 </html>
